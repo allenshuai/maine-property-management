@@ -9,7 +9,7 @@ export default function Header(){
       <div className="flex items-center space-x-3">
 				<div className="w-10 h-10 relative">
 					<Image
-						src="/logo.png"
+						src="/Logo.png"
 						alt="Summit Valley Properties"
 						layout="fill"
 						objectFit="contain"
