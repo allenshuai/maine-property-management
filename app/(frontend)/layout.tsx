@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import RightsFooter from "./components/AllRights";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,10 @@ export default function RootLayout({
           <Header/>
         </header>
 
-        <main>{children}</main>
+        <main>
+          {children}
+          <SpeedInsights />
+        </main>
 
         <footer>
           <Footer />
