@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function HomeHeroSection() {
 	return (
-		<section className="h-screen flex items-center justify-between px-16 bg-gray-100">
+		<section className="min-h-[80vh] flex items-center justify-between px-16 bg-gray-100">
 			<div className="w-1/2 flex justify-center">
 				<div className="relative w-[400px] h-[400px] overflow-hidden" >
 					<Image
