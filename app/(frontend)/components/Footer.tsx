@@ -35,7 +35,7 @@ export default function Footer() {
         {/* Logo in its own row */}
         <div className="flex justify-start mb-2">
           <Image 
-						src="/logo.png" 
+						src="/Logo.png"
 						alt="Summit Valley Properties" 
 						width={40} 
 						height={40} 
