@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useRef } from "react";
+import OfferCard from "./OfferCard";
 
 const offers = [
   {
@@ -93,47 +93,10 @@ export default function OfferSection() {
           {/* Scrollable Wrapper */}
           <div
             ref={scrollRef}
-            className="flex gap-10 overflow-x-scroll scroll-smooth scrollbar-hide"
+            className="flex gap-10 scroll-smooth scrollbar-hide"
           >
             {offers.map((offer, index) => (
-              <div 
-                key={index} 
-                className="w-[360px] bg-white shadow-md rounded-xl overflow-hidden flex flex-col"
-              >
-                {/* Image */}
-                <div className="relative w-full h-48">
-                  <Image 
-                    src={offer.image} 
-                    alt={offer.title} 
-                    fill 
-                    className="object-cover"
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="p-5 flex flex-col flex-grow">
-                  <div className="flex-grow text-center">
-                    <h3 className="text-lg font-bold text-gray-900">
-                      {offer.title}
-                    </h3>
-                    <ul className="text-gray-600 mt-5 text-sm space-y-1">
-                      {offer.description.map((line, i) => (
-                        <li key={i}>{line}</li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Learn More */}
-                  <div className="mt-10 text-center">
-                    <Link 
-                      href="/learn-more"
-                      className="inline-block text-green-600 font-semibold hover:underline"
-                    >
-                      Learn More →
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <OfferCard key={index} {...offer} />          
             ))}
           </div>
         </div>

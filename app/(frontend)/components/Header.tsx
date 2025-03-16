@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Header(){
   return(
-    <header className="flex justify-between px-12 py-8 bg-gray-100 shadow-sm">
+    <header className="flex justify-between px-14 py-8 bg-gray-100 shadow-sm">
       <div className="flex items-center space-x-3">
 				<div className="w-10 h-10 relative">
 					<Image
