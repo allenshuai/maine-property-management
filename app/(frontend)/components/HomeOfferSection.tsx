@@ -53,10 +53,10 @@ export default function OfferSection() {
     <section className="py-16 bg-white">
       <div className="max-w-screen-xl mx-auto px-8">
         {/* Header with Navigation */}
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Left Side: Title */}
           <div className="text-left">
-            <h2 className="text-4xl font-bold text-gray-900">What can we offer</h2>
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900">What can we offer</h2>
             <p className="text-gray-600 mt-2">
               We offer maximize investment, transparent reporting, and proactive approach.
             </p>
@@ -93,13 +93,17 @@ export default function OfferSection() {
           {/* Scrollable Wrapper */}
           <div
             ref={scrollRef}
-            className="flex gap-10 scroll-smooth scrollbar-hide"
+            // snap mandatory to make sure it stops at nearest card
+            className="flex gap-10 scroll-smooth scrollbar-hide overflow-x-auto md:overflow-visible snap-x snap-mandatory"
           >
             {offers.map((offer, index) => (
-              <OfferCard key={index} {...offer} />          
+              <div key={index} className="snap-center w-full md:w-auto flex-shrink-0">
+                <OfferCard {...offer} />
+              </div>
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );
