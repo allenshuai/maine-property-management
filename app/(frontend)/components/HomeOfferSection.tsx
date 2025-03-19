@@ -56,9 +56,12 @@ export default function OfferSection() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Left Side: Title */}
           <div className="text-left">
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-900">What can we offer</h2>
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900">How We Work</h2>
             <p className="text-gray-600 mt-2">
-              We offer maximize investment, transparent reporting, and proactive approach.
+              We maximize your investment with a proactive management 
+              approach and transparent, <br/>
+              real-time reporting—ensuring 
+              your property&apos;s success with clarity and confidence.
             </p>
           </div>
 

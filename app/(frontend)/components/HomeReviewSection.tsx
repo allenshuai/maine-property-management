@@ -51,9 +51,9 @@ export default function ReviewSection() {
         {/* Title and Navigation */}
         <div className="flex justify-between items-center mb-8">
           <div className="text-left">
-            <h2 className="text-4xl font-bold text-gray-900">Real Stories from Customers</h2>
+            <h2 className="text-4xl font-bold text-gray-900">What Owners and Residents Say</h2>
             <p className="text-gray-600 mt-2">
-              Explore and see how we’ve helped them find their perfect property.
+              Real stories from real customers.
             </p>
           </div>
 

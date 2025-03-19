@@ -52,7 +52,7 @@ export default function HomeHeroSection() {
         <div className="mt-4 md:mt-8 border-t border-gray-300 pt-4 space-y-0 text-center md:text-left">
           <p className="text-gray-700">Have any questions?</p>
 					<p className="text-gray-700 mb-2 md:mb-4">Contact us!</p>
-          <p className="md:text-xl text-lg font-semibold text-black tracking-wider">+123 (456) 7890</p>
+          <p className="md:text-xl text-lg font-semibold text-black tracking-wider">(207) - 239 - 2410</p>
         </div>
 
 		

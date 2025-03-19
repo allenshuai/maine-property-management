@@ -10,7 +10,7 @@ export default function Header(){
 
   return(
     <header className="relative flex justify-between px-7 md:px-14 py-6 md:py-8 bg-gray-100">
-      <div className="flex items-center space-x-3">
+      <Link href="/" className="flex items-center space-x-3">
 				<div className="w-10 h-10 relative">
 					<Image
 						src="/Logo.png"
@@ -20,7 +20,7 @@ export default function Header(){
 					/>
 				</div>
 				<span className="md:text-3xl text-md font-semibold text-gray-800">Summit Valley Properties</span>
-			</div>
+			</Link>
 
 			{/* mobile */}
 			<button
@@ -32,8 +32,8 @@ export default function Header(){
 
 			{/* deckstop links */}
 			<nav className="hidden md:flex items-center space-x-6 text-gray-700">
-				<Link href="/services" className="hover:text-gray-900">Services</Link>
-				<Link href="/properties" className="hover:text-gray-900">Properties</Link>
+				<Link href="/services" className="hover:text-gray-900">Our Services</Link>
+				<Link href="/listings" className="hover:text-gray-900">Listings</Link>
 				<Link href="/blogs" className="hover:text-gray-900">Blogs</Link>
 				<Link href="/about" className="hover:text-gray-900">About</Link>
 				<Link 
@@ -49,8 +49,8 @@ export default function Header(){
         <div className={`absolute right-0 top-full w-3/5 bg-white z-50 shadow-lg rounded-lg p-4 flex flex-col space-y-3 md:hidden transition-all duration-300 ${
 					isOpen ? "opacity-100 scale-100 visible" : "opacity-0 scale-95 invisible"
 				}`}>
-          <Link href="/services" className="hover:text-gray-900">Services</Link>
-          <Link href="/properties" className="hover:text-gray-900">Properties</Link>
+          <Link href="/services" className="hover:text-gray-900">Our Services</Link>
+          <Link href="/listings" className="hover:text-gray-900">Listings</Link>
           <Link href="/blogs" className="hover:text-gray-900">Blogs</Link>
           <Link href="/about" className="hover:text-gray-900">About</Link>
 					<Link href="/contact" className="hover:text-gray-900">Contact Us</Link>
