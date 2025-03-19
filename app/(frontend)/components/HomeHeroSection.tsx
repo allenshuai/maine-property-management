@@ -27,9 +27,8 @@ export default function HomeHeroSection() {
 				</h1>
 
 				<div className="md:px-0 px-8 text-left md:text-left text-gray-600 mb-6 md:mb-10 space-y-2 text-sm md:text-base">
-					<p className="">Serving Southern and Midcoast Maine. </p>
-					<p>We provide full-service, transparent, and proactive property 
-          management <br/>protecting your investment day in and day out.</p>
+					<p className="">Full-service, transparent, and proactive property management</p>
+					<p>serving Southern & Midcoast Maine.</p>
 				</div>
         
 

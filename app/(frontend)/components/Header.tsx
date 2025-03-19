@@ -19,7 +19,7 @@ export default function Header(){
 						objectFit="contain"
 					/>
 				</div>
-				<span className="md:text-3xl text-md font-semibold text-gray-800">Summit Valley Properties</span>
+				<span className="md:text-3xl text-[13px] font-semibold text-gray-800">Summit Valley Property Management</span>
 			</Link>
 
 			{/* mobile */}
