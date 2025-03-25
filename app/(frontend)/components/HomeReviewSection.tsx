@@ -28,6 +28,7 @@ const reviews = [
       "Summit Valley Properties has been a game-changer for my rentals. Their proactive management, clear communication, and attention to detail give me total peace of mind.",
     rating: 5,
   },
+  
 ];
 
 export default function ReviewSection() {

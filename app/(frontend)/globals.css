@@ -34,3 +34,19 @@ body {
 .clip-custom-6 { clip-path: inset(50% 0% 0% 50% round 30px); }
 .clip-custom-7 { clip-path: inset(0% 75% 50% 50% round 30px); }
 .clip-custom-8 { clip-path: inset(50% 25% 0% 75% round 30px); } */
+/* 
+.listings-search-form {
+  @apply w-1/2 mx-auto bg-gray-100 p-6 rounded-lg shadow-md;
+}
+
+.listings-search-form input {
+  @apply w-full border border-gray-300 rounded-lg p-2 text-sm;
+}
+
+.listings-search-form select {
+  @apply w-full border border-gray-300 rounded-lg p-2 text-sm bg-white;
+}
+
+.listings-search-form-submit button {
+  @apply bg-gray-900 text-white px-6 py-2 rounded-lg shadow-md hover:bg-gray-700 transition;
+} */

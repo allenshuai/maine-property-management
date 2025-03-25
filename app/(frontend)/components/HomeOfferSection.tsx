@@ -3,36 +3,7 @@
 import Link from "next/link";
 import { useRef } from "react";
 import OfferCard from "./OfferCard";
-
-const offers = [
-  {
-    title: "Maximize Investment",
-    description: [
-      "98% of rents collected before 5th each month",
-      "Yearly rent increase with market analysis",
-      "Quarterly Market and Home Analysis",
-    ],
-    image: "/HomeInvestment.jpg",
-  },
-  {
-    title: "Transparent Reporting",
-    description: [
-      "Income and Cash Flow Statements",
-      "Monthly Account Receivables/Payables",
-      "Work Order Transparency",
-    ],
-    image: "/HomeReporting.webp",
-  },
-  {
-    title: "Proactive Approach",
-    description: [
-      "In-House Services for Majority of Needs",
-      "Competitive and Local Contractors",
-      "Quarterly Inspections at No Cost",
-    ],
-    image: "/HomeApproach.webp",
-  },
-];
+import offersData, { Offer } from "./OfferData";
 
 export default function OfferSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -83,7 +54,7 @@ export default function OfferSection() {
 
             {/* Show All Offers Button */}
             <Link
-              href="/offers"
+              href="/services"
               className="border border-black px-5 py-2 rounded-md hover:bg-gray-100 transition"
             >
               Show all offers
@@ -99,7 +70,7 @@ export default function OfferSection() {
             // snap mandatory to make sure it stops at nearest card
             className="flex gap-10 scroll-smooth scrollbar-hide overflow-x-auto md:overflow-visible snap-x snap-mandatory"
           >
-            {offers.map((offer, index) => (
+            {offersData.map((offer, index) => (
               <div key={index} className="snap-center w-full md:w-auto flex-shrink-0">
                 <OfferCard {...offer} />
               </div>
