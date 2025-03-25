@@ -17,7 +17,7 @@ export default function PropertiesPage() {
   }, []);
 
   return (
-    <div className="max-w-screen-xl mx-auto px-6 md:px-16 py-12">
+    <div className="max-w-screen-xl mx-auto px-6 md:px-16 py-8">
       <div className="w-full h-[300px] relative overflow-hidden rounded-lg shadow-lg mb-8">
         <Image 
           src="/ListingHero.jpg" 
