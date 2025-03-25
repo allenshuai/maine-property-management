@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRef } from "react";
 import OfferCard from "./OfferCard";
-import offersData, { Offer } from "./OfferData";
+import offersData from "./OfferData";
 
 export default function OfferSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
