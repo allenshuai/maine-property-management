@@ -42,7 +42,7 @@ export default function Header(){
 				>
 					Contact Us
 				</Link>
-				<Link href="/" className="hover:text-gray-900">LOG</Link>
+				{/* <Link href="/" className="hover:text-gray-900">LOG</Link> */}
 			</nav>
 
 			{/* mobile links */}
