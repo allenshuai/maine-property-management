@@ -21,4 +21,5 @@ model Blog {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   author      String
+  image_url   String
 }
