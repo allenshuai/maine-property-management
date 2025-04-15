@@ -1,13 +1,13 @@
 import { supabase } from '@/lib/supabaseClient';
 import { notFound } from 'next/navigation';
 
-interface BlogDetailProps {
+interface PageProps {
   params: {
     id: string;
   };
 }
 
-export default async function BlogDetailPage({ params }: BlogDetailProps) {
+export default async function BlogDetailPage({ params }: PageProps) {
   const { data: blog, error } = await supabase
     .from('blogs')
     .select('*')
@@ -28,7 +28,9 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
       )}
 
       {/* Author */}
-      <p className="text-sm text-gray-500 mb-6">Written by {blog.author_name}</p>
+      <p className="text-sm text-gray-500 mb-6">
+        Written by {blog.author_name} – {new Date(blog.created_at).toLocaleDateString('en-US')}
+      </p>
 
       {/* Title + Content */}
       <div className="flex flex-col md:flex-row gap-10">
