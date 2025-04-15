@@ -1,13 +1,11 @@
 import { supabase } from '@/lib/supabaseClient';
 import { notFound } from 'next/navigation';
 
-// type BlogPageParams = {
-//   params: {
-//     id: string;
-//   };
-// };
+interface BlogPageProps {
+  params: Record<string, string>; 
+}
 
-export default async function BlogDetailPage({ params }: { params: { id: string } }) {
+export default async function BlogDetailPage({ params }: BlogPageProps) {
   const { data: blog, error } = await supabase
     .from('blogs')
     .select('*')
