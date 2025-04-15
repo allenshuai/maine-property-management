@@ -1,19 +1,15 @@
 import { supabase } from '@/lib/supabaseClient';
 import { notFound } from 'next/navigation';
 
-type Params = Promise<{ [key: string]: string }>;
-
 interface BlogPageProps {
-  params: Params;
+  params: Record<string, string>; // ← ✅ Safe and satisfies all PageProps constraints
 }
 
 export default async function BlogDetailPage({ params }: BlogPageProps) {
-  const { id } = await params;
-  
   const { data: blog, error } = await supabase
     .from('blogs')
     .select('*')
-    .eq('id', id)
+    .eq('id', params.id)
     .single();
 
   if (error || !blog) return notFound();
