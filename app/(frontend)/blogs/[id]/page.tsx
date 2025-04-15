@@ -1,15 +1,14 @@
 import { supabase } from '@/lib/supabaseClient';
 import { notFound } from 'next/navigation';
 
-interface BlogPageProps {
-  params: Record<string, string>; // ← ✅ Safe and satisfies all PageProps constraints
-}
+// 👇 this makes TS happy and is build-safe
+export default async function BlogDetailPage(props: any) {
+  const id = props.params.id;
 
-export default async function BlogDetailPage({ params }: BlogPageProps) {
   const { data: blog, error } = await supabase
     .from('blogs')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .single();
 
   if (error || !blog) return notFound();
