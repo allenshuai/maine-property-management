@@ -1,13 +1,18 @@
 import { supabase } from '@/lib/supabaseClient';
 import { notFound } from 'next/navigation';
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
+// interface PageProps {
+//   params: {
+//     id: string;
+//   };
+// }
 
-export default async function BlogDetailPage({ params }: PageProps) {
+export default async function BlogDetailPage({
+	params,
+}: {
+	params: { id: string };
+})
+{
   const { data: blog, error } = await supabase
     .from('blogs')
     .select('*')
