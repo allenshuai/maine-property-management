@@ -81,7 +81,7 @@ export default function LatestBlogsSection() {
                   <p className="text-sm text-gray-500 mb-1">
                     {new Date(blog.created_at).toLocaleDateString()}
                   </p>
-									<Link href={`/blog/${blog.id}`}>
+									<Link href={`/blogs/${blog.id}`}>
 										<h3 className="text-xl font-semibold text-gray-900 mb-1">
 											{blog.title}
 										</h3>

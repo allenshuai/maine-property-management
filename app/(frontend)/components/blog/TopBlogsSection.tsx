@@ -66,7 +66,7 @@ export default function TopBlogsSection() {
         <p className="text-sm text-gray-500 mb-2">
           {new Date(mainBlog.created_at).toLocaleDateString()}
         </p>
-				<Link href={`/blog/${mainBlog.id}`}>
+				<Link href={`/blogs/${mainBlog.id}`}>
 					<h3 className="text-2xl font-semibold text-gray-900 mb-2">
 						{mainBlog.title}
 						
@@ -105,7 +105,7 @@ export default function TopBlogsSection() {
             <p className="text-sm text-gray-500 mb-1">
               {new Date(blog.created_at).toLocaleDateString()}
             </p>
-						<Link href={`/blog/${blog.id}`}>
+						<Link href={`/blogs/${blog.id}`}>
 							<h4 className="text-lg font-semibold text-gray-900 mb-1">
 								{blog.title}
 							</h4>
