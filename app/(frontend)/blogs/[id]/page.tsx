@@ -1,7 +1,7 @@
 import { supabase } from '@/lib/supabaseClient';
 import { notFound } from 'next/navigation';
 
-export default async function BlogDetailPage({ params }: { params: { id: string } }) {
+export default async function BlogDetailPage({ params }: any) {
   const { data: blog, error } = await supabase
     .from('blogs')
     .select('*')
@@ -12,7 +12,6 @@ export default async function BlogDetailPage({ params }: { params: { id: string 
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
-      {/* Image */}
       {blog.image_url && (
         <img
           src={blog.image_url}
@@ -20,13 +19,9 @@ export default async function BlogDetailPage({ params }: { params: { id: string 
           className="w-full max-h-[400px] object-cover rounded-xl mb-4"
         />
       )}
-
-      {/* Author */}
       <p className="text-sm text-gray-500 mb-6">
         Written by {blog.author_name} – {new Date(blog.created_at).toLocaleDateString('en-US')}
       </p>
-
-      {/* Title + Content */}
       <div className="flex flex-col md:flex-row gap-10">
         <div className="md:w-1/3">
           <h1 className="text-3xl font-bold text-gray-800 leading-tight mb-6">
