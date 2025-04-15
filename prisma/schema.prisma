@@ -13,13 +13,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Blog {
-  id          String   @id @default(uuid())
+  id          Int      @id @default(autoincrement())
   title       String
   content     String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  author      String
-  image_url   String
+  image_url   String?
+  excerpt     String?
+  author_name String?
+  likes       Int      @default(0)
+  created_at  DateTime @default(now())
 }

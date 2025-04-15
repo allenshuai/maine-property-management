@@ -3,9 +3,8 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import AddBlog from './AddBlog';
-// import { Input } from '@/components/ui/input'; // optional custom Input component
+import EditBlog from './EditBlog';
 import { MdSearch } from 'react-icons/md';
-
 
 interface Blog {
   id: string;
@@ -23,6 +22,19 @@ export default function BlogsTable({ refreshSignal, onChange }: BlogsTableProps)
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
 
+  // Edit modal state
+  const [selectedBlogId, setSelectedBlogId] = useState<string | null>(null);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const openEditModal = (id: string) => {
+    setSelectedBlogId(id);
+    setIsEditing(true);
+  };
+
+  const closeEditModal = () => {
+    setSelectedBlogId(null);
+    setIsEditing(false);
+  };
 
   const fetchBlogs = async () => {
     setLoading(true);
@@ -55,7 +67,6 @@ export default function BlogsTable({ refreshSignal, onChange }: BlogsTableProps)
     (blog.title?.toLowerCase() || '').includes(search.toLowerCase()) ||
     (blog.id?.toString().toLowerCase() || '').includes(search.toLowerCase())
   );
-  
 
   if (loading) return <p>Loading blogs...</p>;
 
@@ -73,7 +84,6 @@ export default function BlogsTable({ refreshSignal, onChange }: BlogsTableProps)
         />
         <AddBlog onBlogAdded={onChange} />
       </div>
-
 
       {/* Blog Table */}
       <div className="overflow-x-auto">
@@ -93,7 +103,12 @@ export default function BlogsTable({ refreshSignal, onChange }: BlogsTableProps)
                 <td className="p-3">{blog.title}</td>
                 <td className="p-3 text-sm text-gray-500">{new Date(blog.created_at).toLocaleString()}</td>
                 <td className="p-3 text-right space-x-2">
-                  <button className="text-gray-600 hover:underline">Edit</button>
+                  <button
+                    className="text-gray-600 hover:underline"
+                    onClick={() => openEditModal(blog.id)}
+                  >
+                    Edit
+                  </button>
                   <button
                     className="text-gray-600 hover:underline"
                     onClick={() => handleDelete(blog.id)}
@@ -113,6 +128,16 @@ export default function BlogsTable({ refreshSignal, onChange }: BlogsTableProps)
           </tbody>
         </table>
       </div>
+
+      {/* Edit Modal */}
+      {isEditing && selectedBlogId && (
+        <EditBlog
+          isOpen={isEditing}
+          onClose={closeEditModal}
+          blogId={selectedBlogId}
+          onBlogUpdated={onChange}
+        />
+      )}
     </div>
   );
 }

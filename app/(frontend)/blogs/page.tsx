@@ -1,9 +1,11 @@
-import BlogList from '../components/blog/BlogList';
+import TopBlogsSection from '../components/blog/TopBlogsSection';
+import LatestBlogsSection from '../components/blog/LatestBlogsSection';
 
-export default function BlogsPage() {
+export default function BlogPage() {
   return (
-    <main>
-      <BlogList />
+    <main className="bg-gray-50">
+      <TopBlogsSection />
+      <LatestBlogsSection />
     </main>
   );
 }

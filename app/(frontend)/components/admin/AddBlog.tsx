@@ -11,9 +11,11 @@ interface AddBlogProps {
 export default function AddBlog({ onBlogAdded }: AddBlogProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState('');
+  const [authorName, setAuthorName] = useState('');
+  const [excerpt, setExcerpt] = useState('');
   const [content, setContent] = useState('');
-  const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleAdd = async () => {
     setLoading(true);
@@ -23,7 +25,9 @@ export default function AddBlog({ onBlogAdded }: AddBlogProps) {
         title, 
         content,
         image_url: imageUrl,
-     }
+        author_name: authorName,
+        excerpt,
+      }
     ]);
 
     setLoading(false);
@@ -31,17 +35,19 @@ export default function AddBlog({ onBlogAdded }: AddBlogProps) {
     if (error) {
       alert('Failed to add blog: ' + error.message);
     } else {
-      onBlogAdded(); // refresh parent table
-      setIsOpen(false); // close modal
+      onBlogAdded();
+      setIsOpen(false);
       setTitle('');
       setContent('');
-			setImageUrl('');
+      setAuthorName('');
+      setExcerpt('');
+      setImageUrl('');
     }
   };
 
   return (
     <>
-      <div className="">
+      <div>
         <button
           onClick={() => setIsOpen(true)}
           className="bg-white w-32 text-gray-600 px-4 py-2 border border-gray-300 rounded-md hover:text-white hover:bg-amber-800 cursor-pointer"
@@ -50,12 +56,11 @@ export default function AddBlog({ onBlogAdded }: AddBlogProps) {
         </button>
       </div>
 
-      {/* className="w-64 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-800" */}
-
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-          <div className="bg-white p-6 rounded-xl shadow-xl w-full max-w-lg h-[400px] flex flex-col">
+          <div className="bg-white p-6 rounded-xl shadow-xl w-full max-w-lg h-[600px] flex flex-col overflow-y-auto">
             <h2 className="text-lg font-semibold mb-4">Add Blog</h2>
+            
             <input
               type="text"
               placeholder="Title"
@@ -63,14 +68,32 @@ export default function AddBlog({ onBlogAdded }: AddBlogProps) {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
+            
+            <input
+              type="text"
+              placeholder="Author Name"
+              className="border px-3 py-2 rounded mb-3"
+              value={authorName}
+              onChange={(e) => setAuthorName(e.target.value)}
+            />
+
+            <textarea
+              placeholder="Short Description"
+              className="border px-3 py-2 rounded mb-3 resize-none"
+              value={excerpt}
+              onChange={(e) => setExcerpt(e.target.value)}
+            />
+
             <textarea
               placeholder="Content"
               className="border px-3 py-2 rounded flex-1 resize-none overflow-y-auto mb-4"
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
-						<BlogImageUploader onUploadComplete={(url) => setImageUrl(url)} />
-            <div className="flex justify-end gap-2">
+
+            <BlogImageUploader onUploadComplete={(url) => setImageUrl(url)} />
+
+            <div className="flex justify-end gap-2 mt-4">
               <button
                 onClick={() => setIsOpen(false)}
                 className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
