@@ -1,7 +1,13 @@
 import { supabase } from '@/lib/supabaseClient';
 import { notFound } from 'next/navigation';
 
-export default async function BlogDetailPage({ params }: any) {
+type BlogPageParams = {
+  params: {
+    id: string;
+  };
+};
+
+export default async function BlogDetailPage({ params }: BlogPageParams) {
   const { data: blog, error } = await supabase
     .from('blogs')
     .select('*')
