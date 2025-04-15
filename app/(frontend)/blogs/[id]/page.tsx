@@ -2,7 +2,9 @@ import { supabase } from '@/lib/supabaseClient';
 import { notFound } from 'next/navigation';
 
 type Props = {
-  params: { id: string };
+  params: {
+    id: string;
+  };
 };
 
 export default async function BlogDetailPage({ params }: Props) {
