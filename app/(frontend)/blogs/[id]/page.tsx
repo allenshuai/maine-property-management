@@ -9,9 +9,7 @@ import { notFound } from 'next/navigation';
 
 export default async function BlogDetailPage({
 	params,
-}: {
-	params: { id: string };
-})
+}: any)
 {
   const { data: blog, error } = await supabase
     .from('blogs')
