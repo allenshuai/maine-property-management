@@ -1,9 +1,12 @@
 import { supabase } from '@/lib/supabaseClient';
 import { notFound } from 'next/navigation';
 
-// 👇 this makes TS happy and is build-safe
-export default async function BlogDetailPage(props: any) {
-  const id = props.params.id;
+type Props = {
+  params: { id: string };
+};
+
+export default async function BlogDetailPage({ params }: Props) {
+  const { id } = params;
 
   const { data: blog, error } = await supabase
     .from('blogs')
