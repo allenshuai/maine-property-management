@@ -13,17 +13,26 @@ export default function SignInPage() {
   const [errorMsg, setErrorMsg] = useState('')
 
   const handleSignIn = async () => {
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error: loginError } = await supabase.auth.signInWithPassword({
       email,
       password,
     })
 
-    if (error) {
-      setErrorMsg(error.message)
-    } else {
-      const userRole = data.user?.user_metadata?.role ?? role
-      router.push(role === 'admin' ? '/admin' : '/user')
+    if (loginError) {
+      setErrorMsg(loginError.message)
+      return
     }
+  
+    const { data: { user }, error: userError } = await supabase.auth.getUser()
+  
+    if (userError || !user) {
+      setErrorMsg("Failed to get user data after login.")
+      return
+    }
+  
+    const userRole = user.user_metadata?.role ?? 'user'
+  
+    router.push(userRole === 'admin' ? '/dashboard/admin' : '/dashboard/user')
   }
 
 

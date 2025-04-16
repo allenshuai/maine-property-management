@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import BlogsTable from '@/app/(frontend)/components/admin/BlogsTable';
+import UsersTable from '@/app/(frontend)/components/admin/UsersTable';
 import Image from 'next/image';
 import { MdDashboard, MdArticle, MdPeople, MdSettings } from 'react-icons/md';
 
@@ -22,24 +23,37 @@ export default function AdminDashboard() {
   };
 
   useEffect(() => {
-    const checkSessionAndInitTab = async () => {
+    const checkAdminRole = async () => {
       const {
-        data: { session },
-      } = await supabase.auth.getSession();
+        data: { user },
+        error,
+      } = await supabase.auth.getUser();
 
-      if (!session) {
-        router.replace('/admin');
-      } else {
-        const urlTab = searchParams.get('tab');
-        if (urlTab && ['dashboard', 'blogs', 'users', 'settings'].includes(urlTab)) {
-          setActiveTab(urlTab as typeof activeTab);
-        }
-        setLoading(false);
+      if (error || !user) {
+        router.replace('/signin'); // not logged in
+        return;
       }
+
+      const role = user.user_metadata?.role;
+      if (role !== 'admin') {
+        router.replace('/signin'); // not admin
+        return;
+      }
+
+      const urlTab = searchParams.get('tab');
+      if (urlTab && ['dashboard', 'blogs', 'users', 'settings'].includes(urlTab)) {
+        setActiveTab(urlTab as typeof activeTab);
+      }
+
+      setLoading(false);
     };
 
-    checkSessionAndInitTab();
+    checkAdminRole();
   }, [router, searchParams]);
+
+  if (loading) {
+    return <div className="flex justify-center items-center h-screen text-lg text-gray-500">Checking admin access...</div>;
+  }
 
   if (loading) return <div className="flex justify-center items-center h-screen">Loading...</div>;
 
@@ -100,8 +114,13 @@ export default function AdminDashboard() {
             </div>
           )}
           {activeTab === 'users' && (
-            <p className="text-lg">Users page coming soon...</p>
+            <div className="pt-8 space-y-6">
+              <div className="bg-white rounded shadow p-4">
+                <UsersTable />
+              </div>
+            </div>
           )}
+
           {activeTab === 'settings' && (
             <p className="text-lg">Settings page coming soon...</p>
           )}
