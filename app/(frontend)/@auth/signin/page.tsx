@@ -21,6 +21,7 @@ export default function SignInPage() {
     if (error) {
       setErrorMsg(error.message)
     } else {
+      const userRole = data.user?.user_metadata?.role ?? role
       router.push(role === 'admin' ? '/admin' : '/user')
     }
   }
