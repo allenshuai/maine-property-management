@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabaseClient'
-import clsx from 'clsx'
+// import clsx from 'clsx'
 
 export default function SignUpPage() {
   const router = useRouter()
@@ -13,7 +13,7 @@ export default function SignUpPage() {
   const [successMsg, setSuccessMsg] = useState('')
 
   const handleSignUp = async () => {
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email,
       password,
       options: {
