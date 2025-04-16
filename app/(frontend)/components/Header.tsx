@@ -19,7 +19,7 @@ export default function Header(){
 						objectFit="contain"
 					/>
 				</div>
-				<span className="md:text-3xl text-[13px] font-semibold text-gray-800">Summit Valley Property Management</span>
+				<span className="md:text-2xl text-[13px] font-semibold text-gray-800">Summit Valley Property Management</span>
 			</Link>
 
 			{/* mobile */}
@@ -36,11 +36,12 @@ export default function Header(){
 				<Link href="/listings" className="hover:text-gray-900">Listings</Link>
 				<Link href="/blogs" className="hover:text-gray-900">Blogs</Link>
 				<Link href="/about" className="hover:text-gray-900">About</Link>
+				<Link href="/contact" className="hover:text-gray-900">Contact</Link>
 				<Link 
-					href="/contact" 
+					href="/signin" 
 					className="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-600 transition"
 				>
-					Contact Us
+					Sign In
 				</Link>
 				{/* <Link href="/" className="hover:text-gray-900">LOG</Link> */}
 			</nav>
@@ -54,7 +55,8 @@ export default function Header(){
           <Link href="/listings" className="hover:text-gray-900">Listings</Link>
           <Link href="/blogs" className="hover:text-gray-900">Blogs</Link>
           <Link href="/about" className="hover:text-gray-900">About</Link>
-					<Link href="/contact" className="hover:text-gray-900">Contact Us</Link>
+					<Link href="/contact" className="hover:text-gray-900">Contact</Link>
+					<Link href="/signin" className="hover:text-gray-900">Sign In</Link>
         </div>
       )}
 

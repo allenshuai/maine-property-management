@@ -28,8 +28,10 @@ export default function RootLayout({
 //   children: React.ReactNode;
 // }>) {
   children,
+  auth,
 }: {
   children: React.ReactNode;
+  auth?: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -44,9 +46,11 @@ export default function RootLayout({
 
         <main>
           {children}
+
           <SpeedInsights />
           <Analytics />
         </main>
+          {auth}
 
         <footer>
           <Footer />

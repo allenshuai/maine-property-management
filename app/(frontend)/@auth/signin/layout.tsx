@@ -1,8 +1,8 @@
-import '../(frontend)/globals.css'; // ✅ Correct relative path
+import '../../globals.css';
 
 export const metadata = {
-  title: 'Admin Dashboard',
-  description: 'Admin area for managing content',
+  title: 'Sign In',
+  description: 'Log in to the dashboard',
 }
 
 export default function AdminRootLayout({
