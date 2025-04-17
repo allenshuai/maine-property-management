@@ -6,6 +6,17 @@ const supabaseAdmin = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY! 
 )
 
+interface AdminUser {
+  id: string
+  email: string
+  created_at: string
+  user_metadata?: {
+    full_name?: string
+    role?: string
+  }
+}
+
+
 export async function GET() {
   const { data, error } = await supabaseAdmin.auth.admin.listUsers()
 
@@ -16,7 +27,7 @@ export async function GET() {
   console.log('USER:', JSON.stringify(data.users[0], null, 2))
 
 
-  const users = data.users.map((user: any) => ({
+  const users = (data.users as AdminUser[]).map((user) => ({
   id: user.id,
   email: user.email,
   full_name: user.user_metadata?.full_name ?? 'Unnamed',
