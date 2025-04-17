@@ -15,6 +15,10 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'dashboard' | 'blogs' | 'users' | 'settings'>('dashboard');
   const [refreshBlogs, setRefreshBlogs] = useState(false);
+  const [totalBlogs, setTotalBlogs] = useState(0);
+  const [totalUsers, setTotalUsers] = useState(0);
+
+  
   const triggerRefresh = () => setRefreshBlogs(prev => !prev);
 
   const handleTabChange = (tab: typeof activeTab) => {
@@ -50,6 +54,22 @@ export default function AdminDashboard() {
 
     checkAdminRole();
   }, [router, searchParams]);
+
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      // Get blog count
+      const { data: blogs } = await supabase.from('blogs').select('id');
+      setTotalBlogs(blogs?.length ?? 0);
+
+      // Get user count from admin API route
+      const res = await fetch('/api/admin/getusers', { method: 'GET' });
+      const json = await res.json();
+      setTotalUsers(json.users?.length ?? 0);
+    };
+
+    fetchStats();
+  }, []);
 
   if (loading) {
     return <div className="flex justify-center items-center h-screen text-lg text-gray-500">Checking admin access...</div>;
@@ -104,7 +124,18 @@ export default function AdminDashboard() {
 
         <div className="">
           {activeTab === 'dashboard' && (
-            <p className="text-lg pt-8">Hii! Welcome to the dashboard.</p>
+            <div className="pt-8 space-y-6">
+            <div className="flex  gap-6">
+              <div className="flex flex-row bg-white rounded-full shadow p-6">
+                <h3 className="text-gray-500 text-xl pr-8">Total Blogs</h3>
+                <p className="text-2xl font-bold">{totalBlogs}</p>
+              </div>
+              <div className="flex flex-row bg-white rounded-full shadow p-6">
+                <h3 className="text-gray-500 text-xl pr-8">Total Users</h3>
+                <p className="text-2xl font-bold">{totalUsers}</p>
+              </div>
+            </div>
+          </div>
           )}
           {activeTab === 'blogs' && (
             <div className="space-y-6 pt-8">
