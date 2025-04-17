@@ -14,5 +14,5 @@ export default function UserDashboard() {
     })
   }, [])
 
-  return <div className="p-8 text-2xl">Welcome User</div>
+  return <div className="p-8 text-2xl">Launchign Soon</div>
 }
