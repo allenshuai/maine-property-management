@@ -13,5 +13,19 @@ export async function GET() {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
-  return NextResponse.json({ users: data.users }, { status: 200 })
+  console.log('USER:', JSON.stringify(data.users[0], null, 2))
+
+
+  const users = data.users.map((user: any) => ({
+  id: user.id,
+  email: user.email,
+  full_name: user.user_metadata?.full_name ?? 'Unnamed',
+  role: user.user_metadata?.role ?? 'Unknown',
+  created_at: user.created_at,
+}))
+
+return NextResponse.json({ users }, { status: 200 })
+
+
+  // return NextResponse.json({ users: data.users }, { status: 200 })
 }

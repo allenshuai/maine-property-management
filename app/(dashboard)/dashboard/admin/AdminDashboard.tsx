@@ -80,7 +80,7 @@ export default function AdminDashboard() {
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
-      <aside className="w-64 bg-white p-6 shadow-md flex flex-col">
+      <aside className="w-64 bg-gray-100 p-6 shadow-md flex flex-col">
         <div className="h-[120px] mb-6 pt-6 px-4">
           <Image src="/logo.png" alt="Logo" width={48} height={48} />
           <h1 className="pt-2 text-lg font-semibold text-gray-700 leading-tight mt-1">
@@ -116,9 +116,9 @@ export default function AdminDashboard() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 bg-gray-100 px-12">
-        <div className="h-[144px] bg-gray-100"></div>
-        <div className="h-[64px] flex items-center pt-6 border-gray-300 text-4xl font-semibold">
+      <main className="flex-1 bg-white px-12">
+        <div className="h-[144px] bg-white"></div>
+        <div className="h-[64px] flex items-center pt-6 border-gray-300 text-4xl font-light">
           {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
         </div>
 
@@ -145,10 +145,15 @@ export default function AdminDashboard() {
             </div>
           )}
           {activeTab === 'users' && (
+            // <div className="pt-8 space-y-6">
+            //   <div className="bg-white rounded shadow p-4">
+            //     <UsersTable />
+            //   </div>
+            // </div>
             <div className="pt-8 space-y-6">
-              <div className="bg-white rounded shadow p-4">
+              {/* <div className="bg-white rounded shadow p-4"> */}
                 <UsersTable />
-              </div>
+              {/* </div> */}
             </div>
           )}
 

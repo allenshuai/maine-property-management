@@ -7,6 +7,7 @@ import { supabase } from '@/lib/supabaseClient'
 
 export default function SignUpPage() {
   const router = useRouter()
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
@@ -17,7 +18,10 @@ export default function SignUpPage() {
       email,
       password,
       options: {
-        data: { role: 'user' } // 👈 assign default role on sign-up
+        data: { 
+          full_name: name,
+          role: 'user' 
+        } 
       }
     })
 
@@ -27,6 +31,7 @@ export default function SignUpPage() {
       setSuccessMsg('Account created! Please check your email to confirm.')
       setEmail('')
       setPassword('')
+      setName('')
       // Optional: redirect after short delay
       setTimeout(() => {
         router.push('/signin')
@@ -48,6 +53,14 @@ export default function SignUpPage() {
         </div>
 
         <div className="rounded-lg border border-gray-200 p-6 shadow-sm space-y-4">
+          <input
+            type="text"
+            placeholder="Full Name"
+            className="w-full border px-4 py-2 rounded-md text-sm"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+         />  
+
           <input
             type="email"
             placeholder="Email"
