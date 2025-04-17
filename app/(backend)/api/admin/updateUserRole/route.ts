@@ -15,7 +15,8 @@ export async function GET() {
   const results = []
 
   for (const user of updates) {
-    const { data, error } = await supabaseAdmin.auth.admin.updateUserById(user.id, {
+    // const { data, error } = await supabaseAdmin.auth.admin.updateUserById(user.id, {
+    const { error } = await supabaseAdmin.auth.admin.updateUserById(user.id, {
       user_metadata: {
         role: user.role
       }
