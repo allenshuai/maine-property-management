@@ -15,6 +15,7 @@ interface CustomUser {
 export default function UsersTable() {
   const [users, setUsers] = useState<CustomUser[]>([])
   const [loading, setLoading] = useState(true)
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -32,6 +33,11 @@ export default function UsersTable() {
     fetchUsers()
   }, [])
 
+  // const filteredUsers = users.filter((blog) =>
+  //   (blog.title?.toLowerCase() || '').includes(search.toLowerCase()) ||
+  //   (blog.id?.toString().toLowerCase() || '').includes(search.toLowerCase())
+  // );
+
   if (loading) return <p>Loading users...</p>
   if (!users.length) return <p className="text-gray-500">No users found.</p>
 
@@ -45,9 +51,12 @@ export default function UsersTable() {
             <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm" />
             <input
               type="text"
-              placeholder="Search"
+              placeholder="Search by Email or Name..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
               className="pl-9 pr-3 py-1.5 border border-gray-200 rounded-md text-sm"
             />
+
           </div>
 
           <button
