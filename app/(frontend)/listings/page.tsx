@@ -6,15 +6,17 @@ import Image from "next/image";
 export default function PropertiesPage() {
   useEffect(() => {
     const scriptId = "rv-jsinit";
-
+  
     if (!document.getElementById(scriptId)) {
-      const script = document.createElement("script");
-      script.id = scriptId;
-      script.src = "https://app.rentvine.com/public/widget/init.js";
-      script.async = true;
-      document.body.appendChild(script);
+      const t = new Date().getTime();
+      const js = document.createElement("script");
+      js.id = scriptId;
+      js.src = `https://app.rentvine.com/public/widget/init.js?_=${t}`;
+      js.async = true;
+      document.body.appendChild(js);
     }
   }, []);
+  
 
   return (
     <div className="max-w-screen-xl mx-auto px-6 md:px-16 py-8">
