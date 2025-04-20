@@ -61,22 +61,30 @@ const ContactForm = () => {
 			<form className="space-y-4" onSubmit={handleSubmit}>
 				<div className="grid grid-cols-2 gap-4">
 					<div>
-						<label className="block text-sm font-semibold">First Name *</label>
+						<label 
+							className="block text-sm font-semibold"
+							style={{fontFamily: 'Montserrat, sans-serif'}}
+						>
+							First Name *
+						</label>
 						<input
 							type="text"
 							required
-							className="w-full p-2 border border-gray-300"
+							className="w-full p-1 border-b border-gray-300"
 							value={firstName}
 							onChange={(e) => setFirstName(e.target.value)}
 						/>
 					</div>
 
 					<div>
-						<label className="block text-sm font-semibold">Last Name *</label>
+						<label 
+							className="block text-sm font-semibold"
+							style={{fontFamily: 'Montserrat, sans-serif'}}
+						>Last Name *</label>
 						<input
 							type="text"
 							required
-							className="w-full p-2 border border-gray-300"
+							className="w-full p-1 border-b border-gray-300"
 							value={lastName}
 							onChange={(e) => setLastName(e.target.value)}
 						/>
@@ -84,21 +92,32 @@ const ContactForm = () => {
 				</div>
 
 				<div>
-					<label className="block text-sm font-semibold">Email *</label>
+					<label 
+						className="block text-sm font-semibold"
+						style={{fontFamily: 'Montserrat, sans-serif'}}
+					>Email *</label>
 					<input
 						type="email"
 						required
-						className="w-full p-2 border border-gray-300"
+						className="w-full p-1 border-b border-gray-300"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 				</div>
 
 				<div>
-					<label className="block text-sm font-semibold">Interested In</label>
-					<div className="flex gap-6 mt-2">
+					<label 
+						className="block text-sm font-semibold"
+						style={{fontFamily: 'Montserrat, sans-serif'}}
+					>
+						Interested In
+					</label>
+					<div className="flex gap-4 mt-2">
 						{["Buy", "Rent", "Other"].map((option) => (
-							<label key={option} className="flex items-center cursor-pointer">
+							<label key={option} 
+								className="flex items-center cursor-pointer font-base"
+								style={{fontFamily: 'Montserrat, sans-serif'}}
+							>
 								<input
 									type="checkbox"
 									checked={selectedOption === option}
@@ -106,7 +125,7 @@ const ContactForm = () => {
 									className="hidden"
 								/>
 								<span
-									className={`w-5 h-5 border-2 rounded-full flex items-center justify-center mr-2 ${
+									className={`w-4 h-4 border-1 rounded-full flex items-center justify-center mr-2 ${
 										selectedOption === option
 											? "border-gray-700"
 											: "border-gray-400"
@@ -123,7 +142,10 @@ const ContactForm = () => {
 				</div>
 
 				<div>
-					<label className="block text-sm font-semibold">Message</label>
+					<label
+						className="block text-sm font-semibold"
+						style={{fontFamily: 'Montserrat, sans-serif'}}
+					>Message</label>
 					<textarea
 						rows={4}
 						className="w-full p-2 border border-gray-300"
@@ -135,7 +157,7 @@ const ContactForm = () => {
 				<button
 					type="submit"
 					disabled={loading}
-					className="w-full bg-black text-white py-3 text-lg font-semibold disabled:opacity-50"
+					className="w-full bg-stone-500 text-white py-3 text-lg font-semibold disabled:opacity-50"
 				>
 					{loading ? "Sending..." : "Send"}
 				</button>

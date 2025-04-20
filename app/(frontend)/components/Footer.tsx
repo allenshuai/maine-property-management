@@ -39,6 +39,7 @@ export default function Footer() {
 						alt="Summit Valley Properties" 
 						width={40} 
 						height={40} 
+
 					/>
         </div>
 

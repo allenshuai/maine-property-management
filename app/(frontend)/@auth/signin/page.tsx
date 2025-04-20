@@ -1,16 +1,25 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { supabase } from '@/lib/supabaseClient'
 import clsx from 'clsx'
 
 export default function SignInPage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [role, setRole] = useState<'user' | 'admin'>('user')
+  
   const [errorMsg, setErrorMsg] = useState('')
+
+  useEffect(() => {
+    const queryRole = searchParams.get('role')
+    if (queryRole === 'admin' || queryRole === 'user') {
+      setRole(queryRole)
+    }
+  }, [searchParams])
 
   const handleSignIn = async () => {
     const { error: loginError } = await supabase.auth.signInWithPassword({

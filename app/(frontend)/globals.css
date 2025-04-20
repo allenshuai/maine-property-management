@@ -1,5 +1,38 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* CSS variables below */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -24,6 +57,27 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes bubbleDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(10px) scale(1);
+  }
+}
+
+.animate-bubble {
+  animation: bubbleDown 300ms ease-out forwards;
+}
+
+.animate-bubble-delay {
+  animation: bubbleDown 400ms ease-out forwards;
+}
+
+
 
 /* for the homepage section 1 aniamtion, we can set this up later , all the pieces coming in  */
 /* .clip-custom-1 { clip-path: inset(0% 25% 50% 0% round 30px); }
