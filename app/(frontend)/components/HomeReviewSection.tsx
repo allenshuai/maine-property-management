@@ -2,6 +2,7 @@
 
 import ReviewCard from "./ReviewCard";
 import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const reviews = [
 	{
@@ -48,7 +49,7 @@ export default function ReviewSection() {
 
   return (
     <section className="py-16 bg-gray-100">
-      <div className="max-w-screen-xl mx-auto px-8">
+      <div className="max-w-6xl mx-auto">
         {/* Title and Navigation */}
         <div className="flex justify-between items-center mb-8">
           <div className="text-left">
@@ -77,11 +78,37 @@ export default function ReviewSection() {
 
         {/* Scrollable Review Cards */}
         <div className="relative">
-          <div ref={scrollRef} className="flex gap-10 scroll-smooth scrollbar-hide">
+          
+          {/* <div ref={scrollRef} className="flex gap-10 scroll-smooth scrollbar-hide">
             {reviews.map((review, index) => (
               <ReviewCard key={index} {...review} />
             ))}
-          </div>
+          </div> */}
+          <motion.div
+            ref={scrollRef}
+            className="flex gap-10 scroll-smooth scrollbar-hide"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            {reviews.map((review, index) => (
+              <motion.div
+                key={index}
+                className="snap-center w-full md:w-auto flex-shrink-0"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                viewport={{ once: true }}
+              >
+                <ReviewCard key={index} {...review} />
+              </motion.div>
+            ))}
+          </motion.div>
+
+
+
+
         </div>
       </div>
     </section>

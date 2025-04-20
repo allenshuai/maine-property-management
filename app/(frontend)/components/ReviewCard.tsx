@@ -16,7 +16,8 @@ export default function ReviewCard({
 	rating 
 }: ReviewCardProps) {
 	return (
-		<div className="w-[360px] bg-white shadow-2xl rounded-2xl overflow-hidden flex flex-col p-6 flex-shrink-0">
+	
+<div className="w-[360px] h-full bg-white shadow-2xl rounded-2xl overflow-hidden flex flex-col p-6">
       {/* Profile Image */}
       <div className="flex justify-center">
         <Image

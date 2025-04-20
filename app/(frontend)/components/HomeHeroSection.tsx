@@ -49,13 +49,15 @@ export default function HomeHeroSection() {
 				>
           <Link 
             href="/contact" 
-            className="border border-black bg-black text-white px-6 py-3 rounded-full hover:bg-gray-900 transition w-full md:w-auto text-center"
+            className="border border-black bg-black text-white px-6 py-3 rounded-full w-full md:w-auto text-center
+						hover:bg-gray-900 hover:scale-110 transition duration-300 ease-in-out"
           >
             Contact us
           </Link>
           <Link 
             href="/listings" 
-            className="border border-black text-black px-6 py-3 rounded-full hover:bg-gray-200 transition w-full md:w-auto text-center"
+            className="border border-black text-black px-6 py-3 rounded-full w-full md:w-auto text-center
+						hover:bg-gray-200 hover:scale-110 transition duration-300 ease-in-out"
           >
             See Listings
           </Link>
@@ -66,13 +68,13 @@ export default function HomeHeroSection() {
 					className="mt-4 md:mt-8 border-t border-gray-300 pt-4 space-y-0 text-center md:text-left"
 					style={{fontFamily: 'Montserrat, sans-serif'}}
 				>
-          <p className="text-gray-700">Have any questions?</p>
-					<p className="text-gray-700 mb-2 md:mb-4">Contact us!</p>
-          <p className="md:text-xl text-lg font-semibold text-black tracking-wider">(207) - 239 - 2410</p>
+        <p className="text-gray-700">Have any questions?</p>
+				<p className="text-gray-700 mb-2 md:mb-4">Contact us!</p>
+          <p className="md:text-xl text-lg font-semibold text-black tracking-wider
+					animate-bounce">(207) - 239 - 2410</p>
         </div>
 
-		
-
+	
       </div>
 
 		</section>

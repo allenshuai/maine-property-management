@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useRef } from "react";
 import OfferCard from "./OfferCard";
 import offersData from "./OfferData";
+import { motion } from "framer-motion";
+
 
 export default function OfferSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -22,7 +24,7 @@ export default function OfferSection() {
 
   return (
     <section className="py-16 bg-white">
-      <div className="max-w-screen-xl mx-auto px-8">
+      <div className="max-w-6xl mx-auto">
         {/* Header with Navigation */}
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Left Side: Title */}
@@ -64,8 +66,10 @@ export default function OfferSection() {
 
         {/* Scrollable Cards Section */}
         <div className="relative mt-14">
+          
+          
           {/* Scrollable Wrapper */}
-          <div
+          {/* <div
             ref={scrollRef}
             // snap mandatory to make sure it stops at nearest card
             className="flex gap-10 scroll-smooth scrollbar-hide overflow-x-auto md:overflow-visible snap-x snap-mandatory"
@@ -75,7 +79,32 @@ export default function OfferSection() {
                 <OfferCard {...offer} />
               </div>
             ))}
-          </div>
+          </div> */}
+          <motion.div
+            ref={scrollRef}
+            className="flex gap-10 scroll-smooth scrollbar-hide overflow-x-auto md:overflow-visible snap-x snap-mandatory"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            {offersData.map((offer, index) => (
+              <motion.div
+                key={index}
+                className="snap-center w-full md:w-auto flex-shrink-0"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.15 }}
+                viewport={{ once: true }}
+              >
+                <OfferCard {...offer} />
+              </motion.div>
+            ))}
+          </motion.div>
+
+
+
+
         </div>
 
       </div>
