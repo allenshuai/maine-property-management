@@ -24,12 +24,12 @@ export const FadeContainer = {
     },
   };
   
-  export const staggerChildren = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
+  // export const staggerChildren = {
+  //   hidden: {},
+  //   show: {
+  //     transition: {
+  //       staggerChildren: 0.15,
+  //     },
+  //   },
+  // };
   

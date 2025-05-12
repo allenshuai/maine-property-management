@@ -11,7 +11,6 @@ import WhatSetsUsApart from '../components/about/WhatSetsUsApart';
 import {
   FadeContainer,
   fadeInUp,
-  staggerChildren,
 } from '../components/about/motionVariants';
 
 export default function AboutPage() {
