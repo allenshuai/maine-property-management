@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import RightsFooter from "./components/AllRights";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from "@vercel/analytics/react";
+import { AuthProvider } from "../context/SupabaseProvider"; // ✅ added
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,17 +18,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
 export const metadata: Metadata = {
   title: "Summit Valley Properties",
   description: "Future Choice",
 };
 
 export default function RootLayout({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) {
   children,
   auth,
 }: {
@@ -36,27 +32,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        // style={{ fontFamily: "var(--font-rocksalt)" }}
-        
-      >
-        <header>
-          <Header/>
-        </header>
-
-        <main>
-          {children}
-
-          <SpeedInsights />
-          <Analytics />
-        </main>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <AuthProvider> {/* ✅ wrap everything in auth provider */}
+          <Header />
+          <main>
+            {children}
+            <SpeedInsights />
+            <Analytics />
+          </main>
           {auth}
-
-        <footer>
           <Footer />
           <RightsFooter />
-        </footer>
+        </AuthProvider>
       </body>
     </html>
   );
