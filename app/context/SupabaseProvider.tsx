@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [userRole, setUserRole] = useState<Role>(null);
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data, error }) => {
+    supabase.auth.getUser().then(({ data }) => {
       if (data?.user) {
         setSession(data.user);
         fetchRole(data.user.id);
